@@ -27,6 +27,10 @@ def create_worker():
 
     WORKER_ID += 1
 
+def num_workers():
+    global WORKER_ID
+    return (WORKER_ID-1)
+
 #Main temporal de pruebas
 if __name__ == "__main__":
     create_worker()

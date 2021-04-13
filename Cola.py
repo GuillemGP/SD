@@ -15,6 +15,7 @@ class Cola:
         return self.items == []
     
     def print_cola(self):
+        print("Elementos de la cola: ")
         for i in self.items:
             print(i)
 
@@ -29,5 +30,6 @@ if __name__ == "__main__":
 
     q.print_cola()
     q.desencolar()
+    q.print_cola()
 
     q.es_vacia()
