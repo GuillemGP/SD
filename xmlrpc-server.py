@@ -9,7 +9,7 @@ def contarPalabrasFichero(fichero):
 
 def diccionarioFichero(fichero):
     diccionario = WordCount.contar_palabras(fichero)
-    WordCount.ver_palabras(diccionario)
+    return diccionario
 
 server = SimpleXMLRPCServer(("localhost", 8000))
 print("Server is listening on port 8000...")
