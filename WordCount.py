@@ -22,7 +22,7 @@ def contar_palabras(ruta):
 	        # La palabra suma uno
             diccionario[palabra] += 1
 
-	    # Si aún no se encuentra
+	      # Si aún no se encuentra
          else:
             diccionario[palabra] = 1
 
