@@ -38,7 +38,8 @@ while(opcion != 0):
             ver_palabras(diccionario)
     
     if opcion == 3: 
-        worker.create_worker()
+        id = proxy.createWorker()
+        print("Worker " + str(id) + " creado")
 
     if opcion == 4: 
         worker.delete_worker(worker.num_workers())
@@ -46,7 +47,7 @@ while(opcion != 0):
     if opcion == 5: 
         worker.show_list_workers()
 
-    queue.print_cola()
+    print()
     opcion = mostrarMenu()
     
 
