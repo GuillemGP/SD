@@ -6,10 +6,11 @@ import worker
 def mostrarMenu():
     print("Que opcion quieres?")
     print("Opcion 0: Salir")
-    print("Opcion 1: Envia tasques al cluster")
-    print("Opcion 2: Afegeix worker")
-    print("Opcion 3: Eliminar worker")
-    print("Opcion 4: Llistar workers")
+    print("Opcion 1: Envia tasques WordCount al cluster")
+    print("Opcion 2: Envia tasques CountinWords al cluster")
+    print("Opcion 3: Afegeix worker")
+    print("Opcion 4: Eliminar worker")
+    print("Opcion 5: Llistar workers")
     opcion = int(input())
     return opcion
 
@@ -27,17 +28,23 @@ while(opcion != 0):
         fichero = input()
         result = proxy.WordCountServer(fichero)
         print(result)
-        
+
     if opcion == 2: 
+        print("Introducir nombre fichero: ")
+        fichero = input()
+        result = proxy.CountingWordsServer(fichero)
+        print(result)
+        
+    if opcion == 3: 
         id = proxy.createWorker()
         print("Worker " + str(id) + " creado")  
             
-    if opcion == 3:
+    if opcion == 4:
         print("Que worker quieres eliminar?")
         id = input()
         string = proxy.killWorker(id)
         print(string)
-    if opcion == 4:
+    if opcion == 5:
         result = proxy.listWorkers()
         print(result) 
     opcion = mostrarMenu()
