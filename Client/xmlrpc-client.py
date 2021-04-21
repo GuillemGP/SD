@@ -1,52 +1,53 @@
 import xmlrpc.client
 
-import Cola
-import worker
-
+#Menu para el cliente
 def mostrarMenu():
-    print("Que opcion quieres?")
-    print("Opcion 0: Salir")
-    print("Opcion 1: Envia tasques WordCount al cluster")
-    print("Opcion 2: Envia tasques CountinWords al cluster")
-    print("Opcion 3: Afegeix worker")
-    print("Opcion 4: Eliminar worker")
-    print("Opcion 5: Llistar workers")
+    print("Quina opcio vols?")
+    print("Opcio 0: Sortir")
+    print("Opcio 1: Enviar tasques WordCount al cluster")
+    print("Opcio 2: Enviar tasques CountinWords al cluster")
+    print("Opcio 3: Afegeix worker")
+    print("Opcio 4: Eliminar worker")
+    print("Opcio 5: Llistar workers")
     opcion = int(input())
     return opcion
 
+#Visualizar contenido del diccionario
 def ver_palabras(diccionario):
    for palabra in list(diccionario.keys()):
       print(palabra, ":", diccionario[palabra])
 
+#Server
 proxy = xmlrpc.client.ServerProxy("http://localhost:8000/")
-queue = Cola.Cola()
 
 opcion = mostrarMenu()
 while(opcion != 0):
     if opcion == 1: 
-        print("Introducir nombre fichero: ")
+        print("Introduir el nom del fitxer: ")
         fichero = input()
         result = proxy.WordCountServer(fichero)
         print(result)
 
     if opcion == 2: 
-        print("Introducir nombre fichero: ")
+        print("Introduir el nom del fitxer: ")
         fichero = input()
         result = proxy.CountingWordsServer(fichero)
         print(result)
         
     if opcion == 3: 
         id = proxy.createWorker()
-        print("Worker " + str(id) + " creado")  
+        print("Worker " + str(id) + " creat")  
             
     if opcion == 4:
-        print("Que worker quieres eliminar?")
+        print("Quin worker vols eliminar?")
         id = input()
         string = proxy.killWorker(id)
         print(string)
+
     if opcion == 5:
         result = proxy.listWorkers()
         print(result) 
+
     opcion = mostrarMenu()
     
 
